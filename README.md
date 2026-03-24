@@ -29,7 +29,7 @@ This project deploys ThreatComposer on AWS with:
 
 ## Architecture
 
-![Architecture Diagram](docs/architecture.png)
+![Architecture Diagram](Docs/architecture.png)
 
 ---
 
