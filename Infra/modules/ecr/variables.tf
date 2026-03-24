@@ -14,5 +14,4 @@ variable "aws_ecr_repository_scan" {
 
 variable "ssm_parameter_name" {
   type    = string
-  default = "/ecs-project/ecr/repository_url"
 }

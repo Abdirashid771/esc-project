@@ -2,6 +2,13 @@ name: Docker pipeline
 
 on:
   workflow_dispatch:
+  push:
+      branches:
+        - main
+      paths:
+        - 'app/**'
+        - 'Dockerfile'
+        
 jobs:
   docker_build:
     runs-on: ubuntu-latest

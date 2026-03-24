@@ -1,11 +1,9 @@
 variable "vpc_project" {
     type = string
-    default = "10.1.0.0/16"
 }
 
 variable "public1_cidr_block" {
     type = string
-    default = "10.1.1.0/24"
 }
 
 variable "availability_zone_1" {
@@ -15,7 +13,6 @@ variable "availability_zone_1" {
 
 variable "public2_cidr_block" {
     type = string
-    default = "10.1.2.0/24"
 }
 
 variable "availability_zone_2" {
@@ -26,13 +23,11 @@ variable "availability_zone_2" {
 
 variable "private1_cidr_block" {
     type = string
-    default = "10.1.3.0/24"
 }
 
 
 variable "private2_cidr_block" {
     type = string
-    default = "10.1.4.0/24"
 }
 
 

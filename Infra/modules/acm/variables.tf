@@ -1,6 +1,5 @@
 variable "acm_domain_name" {
     type = string
-    default = "tm.esproject.xyz"
 }
 
 variable "acm_validation" {
@@ -10,7 +9,6 @@ variable "acm_validation" {
 
 variable "allow_overwrite" {
     type = bool
-    default = true
 }
 
 variable "hosted_zone_id" {

@@ -21,7 +21,6 @@ variable "lb_target_group_name" {
 
 variable "lb_target_group_port" {
     type = number
-    default = 80
 }
 
 variable "lb_target_group_protocol" {
@@ -156,7 +155,7 @@ variable "egress_from_port" {
 
 variable "egress_protocol" {
     type = string
-    default = -1
+    default = "-1"
   
 }
 
