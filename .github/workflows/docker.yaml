@@ -1,0 +1,49 @@
+name: Docker pipeline
+
+on:
+  workflow_dispatch:
+
+jobs:
+  docker_build:
+    runs-on: ubuntu-latest 
+    env:
+      ECR_REPOSITORY: pipeline_demo
+      IMAGE_TAG: ${{ github.sha }}
+      ECR_REGISTRY: ""
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-2
+      
+      - name: Retrieve Ecr URL via SSM
+        run : | 
+         ECR_URL=$(aws ssm get-parameter --name "/ecs-project/ecr/repository_url" --query "Parameter.Value" --output text )
+         echo "ECR_REGISTRY=$ECR_URL" >> $GITHUB_ENV
+        
+      - name: Build Docker image
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ./app
+
+      - name: Scan Docker image with Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
+          format: table
+          severity: CRITICAL
+          exit-code: 1
+          ignore-unfixed: true
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Push Docker image
+        run: |
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
