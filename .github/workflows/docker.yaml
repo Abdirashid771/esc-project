@@ -2,25 +2,26 @@ name: Docker pipeline
 
 on:
   workflow_dispatch:
-
 jobs:
   docker_build:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     env:
-      ECR_REPOSITORY: pipeline_demo
+      ECR_REPOSITORY: ecs_pipeline
       IMAGE_TAG: ${{ github.sha }}
       ECR_REGISTRY: ""
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-west-2
+      - name: configure aws credentials using OIDC
+        uses: aws-actions/configure-aws-credentials@v2
+        with: 
+          role-to-assume: ${{secrets.AWS_IAM_WRITE_ROLE_ARN }}
+          aws-region: ${{ secrets.AWS_REGION }}
       
       - name: Retrieve Ecr URL via SSM
         run : | 

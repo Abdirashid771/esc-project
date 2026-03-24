@@ -1,35 +1,36 @@
-name: Terraform Deploy Pipeline
+name: Terraform Destroy Pipeline
 
 on:
   workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest 
-
+  terraform_destroy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
+      - name: configure aws credentials using OIDC
+        uses: aws-actions/configure-aws-credentials@v2
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-west-2
+          role-to-assume: ${{secrets.AWS_IAM_WRITE_ROLE_ARN }}
+          aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Terraform setup
         uses: hashicorp/setup-terraform@v4
 
       - name: Terraform Init
         id: init
-        run: terraform init 
+        run: terraform init -input=false
         working-directory: ./infra
 
       
       - name: Terraform destroy
         id: destroy
-        run: terraform destroy
+        run: terraform destroy -auto-approve -no-color
         working-directory: ./infra
 
 
