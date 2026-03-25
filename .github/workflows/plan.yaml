@@ -23,9 +23,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: configure aws credentials using OIDC
-        uses: aws-actions/configure-aws-credentials@v6
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{secrets.AWS_READ_ROLE_ARN }}
+          role-to-assume: ${{secrets.AWS_READ_ROLE_ARN}}
           role-session-name: GitHubActions
           aws-region: eu-west-2
 
