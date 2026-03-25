@@ -18,7 +18,7 @@ resource "aws_lb_target_group" "alb_target" {
 
 #HTTPS 443
 resource "aws_lb_listener" "https_listener" {
-  load_balancer_arn = aws_lb.alb_lb.arn 
+  load_balancer_arn = aws_lb.alb_lb.arn
   port              = var.listener_port
   protocol          = var.listener_protocol
   ssl_policy        = var.ssl_policy
@@ -49,7 +49,7 @@ resource "aws_lb_listener" "http_listener" {
 
 #ALB-SG
 resource "aws_security_group" "alb_sg" {
-vpc_id      = var.vpc_id
+  vpc_id = var.vpc_id
 
 
   ingress { #443
@@ -59,7 +59,7 @@ vpc_id      = var.vpc_id
     cidr_blocks = var.ingress_cidr_blocks
   }
 
-  ingress {#80
+  ingress { #80
     from_port   = var.ingress_from_port_http
     to_port     = var.ingress_to_port_http
     protocol    = var.ingress_protocol_http

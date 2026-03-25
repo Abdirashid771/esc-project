@@ -1,167 +1,167 @@
 variable "alb_name" {
-    type = string
+  type = string
 }
 
 variable "alb_internal" {
-    type = bool
-    default = false
+  type    = bool
+  default = false
 }
 
 variable "alb_load_balancer_type" {
-    type = string
+  type = string
 }
 
 variable "alb_subnets" {
-    type = list(string)
+  type = list(string)
 }
 
 variable "lb_target_group_name" {
-    type = string
+  type = string
 }
 
 variable "lb_target_group_port" {
-    type = number
+  type = number
 }
 
 variable "lb_target_group_protocol" {
-    type = string
+  type = string
 }
 
 variable "lb_target_group_target_type" {
-    type = string
+  type = string
 }
 
 variable "lb_target_group_vpc" {
-    type = string
+  type = string
 }
 
 
 
 variable "listener_port" {
-    type = number
-    default = 443
+  type    = number
+  default = 443
 }
 
 variable "listener_protocol" {
-    type = string
+  type = string
 }
 
 variable "ssl_policy" {
-    type = string
+  type = string
 }
 
 variable "certificate" {
-    type = string
+  type = string
 }
 
 variable "default_action_type" {
-    type = string
+  type = string
 }
 
 variable "listener_port_http" {
-    type = number
-    default = 80
+  type    = number
+  default = 80
 }
 
 variable "listener_protocol_http" {
-    type = string
+  type = string
 }
 
 
 variable "redirect_port" {
-    type = number
-    default = 443
+  type    = number
+  default = 443
 }
 
 variable "redirect_protocol" {
-    type = string
-    default = "https"
+  type    = string
+  default = "https"
 }
 
 variable "redirect_status_code" {
-    type = string
-    default = "HTTP_301"
-  
+  type    = string
+  default = "HTTP_301"
+
 }
 
 #HTTPS SG
 
 variable "vpc_id" {
-    type = string
-  
+  type = string
+
 }
 variable "ingress_from_port" {
-    type = number
-    default = 443
-  
+  type    = number
+  default = 443
+
 }
 
 variable "ingress_to_port" {
-    type = number
-    default = 443
-  
+  type    = number
+  default = 443
+
 }
 
 variable "ingress_protocol" {
-    type = string
-    default = "tcp"
+  type    = string
+  default = "tcp"
 }
 
 
 variable "ingress_cidr_blocks" {
-    type = list(string)
-    default = ["0.0.0.0/0"]
-  
+  type    = list(string)
+  default = ["0.0.0.0/0"]
+
 }
 
 #Ingress 80
 
 variable "ingress_from_port_http" {
-    type = number
-    default = 80
-  
+  type    = number
+  default = 80
+
 }
 
 variable "ingress_to_port_http" {
-    type = number
-    default = 80
-  
+  type    = number
+  default = 80
+
 }
 
 variable "ingress_protocol_http" {
-    type = string
-    default = "tcp"
+  type    = string
+  default = "tcp"
 }
 
 variable "ingress_cidr_blocks_http" {
-    type = list(string)
-    default = ["0.0.0.0/0"]
-  
+  type    = list(string)
+  default = ["0.0.0.0/0"]
+
 }
 
 #Egress ALL
 
 variable "egress_to_port" {
-    type = number
-    default = 0
-  
+  type    = number
+  default = 0
+
 }
 
 variable "egress_from_port" {
-    type = number
-    default = 0
-  
+  type    = number
+  default = 0
+
 }
 
 variable "egress_protocol" {
-    type = string
-    default = "-1"
-  
+  type    = string
+  default = "-1"
+
 }
 
 variable "egress_cidr_blocks" {
-    type = list(string)
-    default = ["0.0.0.0/0"]
-  
+  type    = list(string)
+  default = ["0.0.0.0/0"]
+
 }
 
