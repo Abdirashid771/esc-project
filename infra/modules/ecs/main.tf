@@ -65,7 +65,8 @@ resource "aws_security_group" "ecs_sg" {
 
 
 
-  ingress { #8080
+  ingress {
+    description     = "allows inbound traffic from ALB"
     from_port       = var.ingress_from_port_ecs
     to_port         = var.ingress_to_port_ecs
     protocol        = var.ingress_protocol_ecs
@@ -74,6 +75,7 @@ resource "aws_security_group" "ecs_sg" {
 
 
   egress {
+    description = "allows outbound traffic"
     from_port   = var.egress_from_port_ecs
     to_port     = var.egress_to_port_ecs
     protocol    = var.egress_protocol_ecs
