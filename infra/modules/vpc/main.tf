@@ -2,6 +2,9 @@ resource "aws_vpc" "project" {
   cidr_block = var.vpc_project
 }
 
+resource "aws_default_security_group" "default" {
+  vpc_id = aws_vpc.project.id
+}
 
 #IGW
 

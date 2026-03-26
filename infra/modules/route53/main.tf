@@ -3,7 +3,7 @@ data "aws_route53_zone" "ecs_zone" {
 }
 
 resource "aws_route53_record" "www" {
-  zone_id = data.aws_route53_zone.ecs_zone
+  zone_id = data.aws_route53_zone.ecs_zone.id
   name    = var.aws_route53_record_name
   type    = "A"
 

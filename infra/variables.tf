@@ -140,9 +140,6 @@ variable "assign_public_ip" {
   default = true
 }
 
-variable "subnets" {
-  type = list(string)
-}
 
 
 # ECR
@@ -163,19 +160,17 @@ variable "aws_ecr_repository_scan" {
 
 variable "ssm_parameter_name" {
   type    = string
-  default = "/ecs-project/ecr/repository_url"
+
 }
 
 # VPC
 
 variable "vpc_project" {
   type    = string
-  default = "10.1.0.0/16"
 }
 
 variable "public1_cidr_block" {
   type    = string
-  default = "10.1.1.0/24"
 }
 
 variable "availability_zone_1" {
@@ -185,7 +180,6 @@ variable "availability_zone_1" {
 
 variable "public2_cidr_block" {
   type    = string
-  default = "10.1.2.0/24"
 }
 
 variable "availability_zone_2" {
@@ -196,13 +190,12 @@ variable "availability_zone_2" {
 
 variable "private1_cidr_block" {
   type    = string
-  default = "10.1.3.0/24"
 }
 
 
 variable "private2_cidr_block" {
   type    = string
-  default = "10.1.4.0/24"
+
 }
 
 
@@ -230,9 +223,6 @@ variable "alb_load_balancer_type" {
   type = string
 }
 
-variable "alb_subnets" {
-  type = list(string)
-}
 
 variable "lb_target_group_name" {
   type = string
@@ -295,7 +285,7 @@ variable "redirect_port" {
 
 variable "redirect_protocol" {
   type    = string
-  default = "https"
+  default = "HTTPS"
 }
 
 variable "redirect_status_code" {
@@ -389,7 +379,6 @@ variable "egress_cidr_blocks" {
 
 variable "acm_domain_name" {
   type    = string
-  default = "tm.esproject.xyz"
 }
 
 variable "acm_validation" {
@@ -424,12 +413,10 @@ variable "value_ttl" {
 
 variable "aws_route53_zone_name" {
   type    = string
-  default = "esproject.xyz"
 }
 
 variable "aws_route53_record_name" {
   type    = string
-  default = "tm.esproject.xyz"
 }
 
 

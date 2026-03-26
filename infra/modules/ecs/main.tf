@@ -16,6 +16,8 @@ resource "aws_ecs_task_definition" "app" {
   memory                   = var.ecs_task_definition_memory
   execution_role_arn       = aws_iam_role.ecs_role.arn
 
+  
+
   container_definitions = jsonencode([
     {
       name      = var.ecs_container_definitions_name
@@ -23,6 +25,8 @@ resource "aws_ecs_task_definition" "app" {
       cpu       = var.ecs_container_definitions_cpu
       memory    = var.ecs_container_definitions_memory
       essential = var.ecs_container_definitions_essential
+      user = "appuser"
+      readonlyRootFilesystem =  true
 
       portMappings = [
         {
@@ -50,13 +54,17 @@ resource "aws_ecs_task_definition" "app" {
 #Cloudwatch
 resource "aws_cloudwatch_log_group" "ecs_logs" {
   name              = "/ecs/${var.ecs_cluster_name}"
-  retention_in_days = 7
+  retention_in_days = 365
 }
 
 #ECS-SG
 resource "aws_security_group" "ecs_sg" {
   name   = var.security_group_name
   vpc_id = var.security_group_vpc_id
+
+  tags = {
+    Name = "allow_traffic_alb"
+  }
 
 
   ingress { #8080

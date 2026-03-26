@@ -2,8 +2,12 @@ resource "aws_lb" "alb_lb" {
   name               = var.alb_name
   internal           = var.alb_internal
   load_balancer_type = var.alb_load_balancer_type
-  security_groups    = [aws_security_group.alb_sg]
+  security_groups    = [aws_security_group.alb_sg.id]
   subnets            = var.alb_subnets
+
+  enable_deletion_protection = true
+  drop_invalid_header_fields = true
+
 
 }
 
@@ -50,6 +54,10 @@ resource "aws_lb_listener" "http_listener" {
 #ALB-SG
 resource "aws_security_group" "alb_sg" {
   vpc_id = var.vpc_id
+
+tags = {
+    Name = "allow_traffic"
+  }
 
 
   ingress { #443
