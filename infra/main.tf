@@ -3,8 +3,6 @@ module "ecs" {
   source = "./modules/ecs"
 
   ecs_cluster_name                           = var.ecs_cluster_name
-  setting_name                               = var.setting_name
-  setting_value                              = var.setting_value
   ecs_task_definition_family                 = var.ecs_task_definition_family
   ecs_task_definition_requires_compatibilies = var.ecs_task_definition_requires_compatibilies
   ecs_task_definition_cpu                    = var.ecs_task_definition_cpu

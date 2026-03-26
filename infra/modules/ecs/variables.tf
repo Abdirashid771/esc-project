@@ -3,14 +3,6 @@ variable "ecs_cluster_name" {
 
 }
 
-variable "setting_name" {
-  type = string
-}
-
-variable "setting_value" {
-  type = string
-}
-
 variable "ecs_task_definition_family" {
   type = string
 }

@@ -2,8 +2,8 @@ resource "aws_ecs_cluster" "ecs_cluster" {
   name = var.ecs_cluster_name
 
   setting {
-    name  = var.setting_name
-    value = var.setting_value
+    name  = "containerInsights"
+    value = "enhanced"
   }
 }
 
@@ -59,12 +59,10 @@ resource "aws_cloudwatch_log_group" "ecs_logs" {
 
 #ECS-SG
 resource "aws_security_group" "ecs_sg" {
-  name   = var.security_group_name
-  vpc_id = var.security_group_vpc_id
+  name        = var.security_group_name
+  description = "allows traffic from ALB only"
+  vpc_id      = var.security_group_vpc_id
 
-  tags = {
-    Name = "allow_traffic_alb"
-  }
 
 
   ingress { #8080

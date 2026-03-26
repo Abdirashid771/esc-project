@@ -53,11 +53,10 @@ resource "aws_lb_listener" "http_listener" {
 
 #ALB-SG
 resource "aws_security_group" "alb_sg" {
-  vpc_id = var.vpc_id
+  description = "allows HTTP and HTTPS inbound"
+  vpc_id      = var.vpc_id
 
-  tags = {
-    Name = "allow_traffic"
-  }
+
 
 
   ingress { #443
