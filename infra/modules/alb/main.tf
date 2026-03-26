@@ -15,8 +15,18 @@ resource "aws_lb_target_group" "alb_target" {
   name        = var.lb_target_group_name
   port        = var.lb_target_group_port
   protocol    = var.lb_target_group_protocol
-  target_type = var.lb_target_group_target_type #ip
+  target_type = var.lb_target_group_target_type
   vpc_id      = var.lb_target_group_vpc
+
+  health_check {
+    path                = var.health_check_path
+    protocol            = var.http_protocol
+    matcher             = var.health_check_matcher
+    interval            = var.health_check_interval
+    timeout             = var.health_check_timeout
+    healthy_threshold   = var.healthy_threshold
+    unhealthy_threshold = var.unhealthy_threshold
+  }
 }
 
 
@@ -60,6 +70,7 @@ resource "aws_security_group" "alb_sg" {
 
 
   ingress { #443
+    description = "Allow HTTPS from internet"
     from_port   = var.ingress_from_port
     to_port     = var.ingress_to_port
     protocol    = var.ingress_protocol
@@ -67,6 +78,7 @@ resource "aws_security_group" "alb_sg" {
   }
 
   ingress { #80
+    description = "Allow HTTP from internet"
     from_port   = var.ingress_from_port_http
     to_port     = var.ingress_to_port_http
     protocol    = var.ingress_protocol_http
@@ -74,6 +86,7 @@ resource "aws_security_group" "alb_sg" {
   }
 
   egress {
+    description = "Allow outbound"
     from_port   = var.egress_from_port
     to_port     = var.egress_to_port
     protocol    = var.egress_protocol

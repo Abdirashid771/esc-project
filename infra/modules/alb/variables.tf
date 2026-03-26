@@ -165,3 +165,46 @@ variable "egress_cidr_blocks" {
 
 }
 
+#Healthcheck
+
+variable "health_check_path" {
+  type    = string
+  default = "/health"
+
+}
+
+variable "http_protocol" {
+  type    = string
+  default = "HTTP"
+
+}
+
+variable "health_check_matcher" {
+  type    = number
+  default = "200"
+
+}
+
+variable "health_check_interval" {
+  type    = number
+  default = 30
+
+}
+
+variable "health_check_timeout" {
+  type    = number
+  default = 3
+
+}
+
+variable "healthy_threshold" {
+  type    = number
+  default = 3
+
+}
+
+variable "unhealthy_threshold" {
+  type    = number
+  default = 5
+
+}
