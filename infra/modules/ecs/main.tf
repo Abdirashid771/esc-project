@@ -16,17 +16,17 @@ resource "aws_ecs_task_definition" "app" {
   memory                   = var.ecs_task_definition_memory
   execution_role_arn       = aws_iam_role.ecs_role.arn
 
-  
+
 
   container_definitions = jsonencode([
     {
-      name      = var.ecs_container_definitions_name
-      image     = var.ecs_container_definitions_image
-      cpu       = var.ecs_container_definitions_cpu
-      memory    = var.ecs_container_definitions_memory
-      essential = var.ecs_container_definitions_essential
-      user = "appuser"
-      readonlyRootFilesystem =  true
+      name                   = var.ecs_container_definitions_name
+      image                  = var.ecs_container_definitions_image
+      cpu                    = var.ecs_container_definitions_cpu
+      memory                 = var.ecs_container_definitions_memory
+      essential              = var.ecs_container_definitions_essential
+      user                   = "appuser"
+      readonlyRootFilesystem = true
 
       portMappings = [
         {

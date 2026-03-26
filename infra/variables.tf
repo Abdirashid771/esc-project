@@ -159,18 +159,18 @@ variable "aws_ecr_repository_scan" {
 }
 
 variable "ssm_parameter_name" {
-  type    = string
+  type = string
 
 }
 
 # VPC
 
 variable "vpc_project" {
-  type    = string
+  type = string
 }
 
 variable "public1_cidr_block" {
-  type    = string
+  type = string
 }
 
 variable "availability_zone_1" {
@@ -179,7 +179,7 @@ variable "availability_zone_1" {
 }
 
 variable "public2_cidr_block" {
-  type    = string
+  type = string
 }
 
 variable "availability_zone_2" {
@@ -189,12 +189,12 @@ variable "availability_zone_2" {
 
 
 variable "private1_cidr_block" {
-  type    = string
+  type = string
 }
 
 
 variable "private2_cidr_block" {
-  type    = string
+  type = string
 
 }
 
@@ -378,7 +378,7 @@ variable "egress_cidr_blocks" {
 #ACM
 
 variable "acm_domain_name" {
-  type    = string
+  type = string
 }
 
 variable "acm_validation" {
@@ -412,11 +412,11 @@ variable "value_ttl" {
 #Route53
 
 variable "aws_route53_zone_name" {
-  type    = string
+  type = string
 }
 
 variable "aws_route53_record_name" {
-  type    = string
+  type = string
 }
 
 

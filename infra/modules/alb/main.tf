@@ -55,7 +55,7 @@ resource "aws_lb_listener" "http_listener" {
 resource "aws_security_group" "alb_sg" {
   vpc_id = var.vpc_id
 
-tags = {
+  tags = {
     Name = "allow_traffic"
   }
 
