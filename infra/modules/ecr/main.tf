@@ -10,6 +10,6 @@ resource "aws_ecr_repository" "ecs_image" {
 resource "aws_ssm_parameter" "ecr_url" {
   name        = var.ssm_parameter_name
   description = "ECR repository URL"
-  type        = "SecureString"
+  type        = "String"
   value       = aws_ecr_repository.ecs_image.repository_url
 }
