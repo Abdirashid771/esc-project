@@ -66,7 +66,6 @@ module "alb" {
 
   alb_name                    = var.alb_name
   alb_internal                = var.alb_internal
-  alb_load_balancer_type      = var.alb_load_balancer_type # 
   alb_subnets                 = module.vpc.aws_public_subnet
   lb_target_group_name        = var.lb_target_group_name #
   lb_target_group_port        = var.lb_target_group_port #

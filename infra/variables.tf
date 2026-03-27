@@ -195,11 +195,6 @@ variable "alb_internal" {
   default = false
 }
 
-variable "alb_load_balancer_type" {
-  type = string
-
-}
-
 
 variable "lb_target_group_name" {
   type = string
