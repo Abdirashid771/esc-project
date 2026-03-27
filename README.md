@@ -105,7 +105,7 @@ Four pipelines — infrastructure and application deployments are fully independ
 ![Terraform Apply Pipeline](Docs/pipelines/apply.png)
 
 ### Terraform Destroy Pipeline
-
+![Terraform Destroy Pipeline](Docs/pipelines/destroy.png)
 
 ---
 
