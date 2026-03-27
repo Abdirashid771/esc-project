@@ -21,6 +21,9 @@ jobs:
 
       - name: Terraform setup
         uses: hashicorp/setup-terraform@v4
+      
+      - name: Create tfvars
+        run: echo '${{ secrets.TF_VARS }}' > infra/terraform.tfvars
 
       - name: Terraform Init
         id: init
