@@ -4,13 +4,6 @@ variable "ecs_cluster_name" {
 
 }
 
-variable "setting_name" {
-  type = string
-}
-
-variable "setting_value" {
-  type = string
-}
 
 variable "ecs_task_definition_family" {
   type = string
@@ -31,10 +24,6 @@ variable "ecs_task_definition_memory" {
 }
 
 variable "ecs_container_definitions_name" {
-  type = string
-}
-
-variable "ecs_container_definitions_image" {
   type = string
 }
 
@@ -72,9 +61,6 @@ variable "security_group_name" {
   type = string
 }
 
-variable "security_group_vpc_id" {
-  type = string
-}
 
 variable "ingress_from_port_ecs" {
   type = number
@@ -87,10 +73,6 @@ variable "ingress_to_port_ecs" {
 variable "ingress_protocol_ecs" {
   type = string
 }
-variable "security_groups" {
-  type = string
-}
-
 
 #EGRESS
 variable "egress_from_port_ecs" {
@@ -120,9 +102,6 @@ variable "ecs_service_launch_type" {
 
 
 #loadbalancer settings
-variable "target_group_arn" {
-  type = string
-}
 
 variable "container_name" {
   type = string
@@ -184,8 +163,7 @@ variable "public2_cidr_block" {
 }
 
 variable "availability_zone_2" {
-  type    = string
-  default = "eu-west-1b"
+  type = string
 }
 
 
@@ -200,13 +178,11 @@ variable "private2_cidr_block" {
 
 
 variable "private_route_cidr_block" {
-  type    = string
-  default = "0.0.0.0/0"
+  type = string
 }
 
 variable "public_route_cidr_block" {
-  type    = string
-  default = "0.0.0.0/0"
+  type = string
 }
 
 # ALB
@@ -241,11 +217,6 @@ variable "lb_target_group_target_type" {
   type = string
 }
 
-variable "lb_target_group_vpc" {
-  type = string
-}
-
-
 
 variable "listener_port" {
   type    = number
@@ -260,9 +231,6 @@ variable "ssl_policy" {
   type = string
 }
 
-variable "certificate" {
-  type = string
-}
 
 variable "default_action_type" {
   type = string
@@ -296,10 +264,6 @@ variable "redirect_status_code" {
 
 #HTTPS SG
 
-variable "vpc_id" {
-  type = string
-
-}
 variable "ingress_from_port" {
   type    = number
   default = 443
@@ -398,10 +362,6 @@ variable "allow_overwrite" {
   default = true
 }
 
-variable "hosted_zone_id" {
-  type = string
-}
-
 
 variable "value_ttl" {
   type    = number
@@ -422,14 +382,6 @@ variable "aws_route53_record_name" {
   default = "tm.esproject.xyz"
 }
 
-
-variable "alias_name" {
-  type = string
-}
-
-variable "alias_zone_id" {
-  type = string
-}
 
 
 variable "alias_evaluate_target_health" {
