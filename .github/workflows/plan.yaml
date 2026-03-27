@@ -28,10 +28,6 @@ jobs:
           role-to-assume: ${{secrets.AWS_READ_ROLE_ARN}}
           aws-region: eu-west-2
 
-      - name: Create tfvars
-        run: echo '${{secrets.TF_VARS}}' > infra/terraform.tfvars  
-        
-        
       - name: Terraform setup
         uses: hashicorp/setup-terraform@v4
 
@@ -39,6 +35,9 @@ jobs:
         id: fmt
         run: terraform fmt -check
         working-directory: ./infra
+
+      - name: Create tfvars
+        run: echo '${{secrets.TF_VARS}}' > infra/terraform.tfvars  
 
       - name: Terraform Init
         id: init
