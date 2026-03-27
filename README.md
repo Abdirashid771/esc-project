@@ -4,7 +4,7 @@ Production deployment of ThreatComposer, an open-source threat modelling tool bu
 
 **Live: https://tm.esproject.xyz**
 
-<!-- Uploading "Loom _ Free Screen & Video Recording Software _ Loom - 27 March 2026.mp4"... -->
+https://github.com/user-attachments/assets/33ed3af9-820d-4d24-98c6-f00eded39648
 
 ## Overview
 
