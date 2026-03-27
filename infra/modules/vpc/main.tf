@@ -11,6 +11,7 @@ resource "aws_default_security_group" "default" {
 resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.project.id
 
+
 }
 
 #NAT
@@ -29,10 +30,14 @@ resource "aws_nat_gateway" "nat_ecs_2" {
 
 resource "aws_eip" "nat1" {
   domain = "vpc"
+
+  depends_on = [aws_internet_gateway.gw]
 }
 
 resource "aws_eip" "nat2" {
   domain = "vpc"
+
+  depends_on = [aws_internet_gateway.gw]
 }
 
 #Objective is route the public subnets to the Internet GW and Private to be routed to NAT

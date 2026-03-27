@@ -5,12 +5,8 @@ resource "aws_lb" "alb_lb" {
   security_groups    = [aws_security_group.alb_sg.id]
   subnets            = var.alb_subnets
 
-  enable_deletion_protection = true
+  enable_deletion_protection = false
   drop_invalid_header_fields = true
-
-  lifecycle {
-    prevent_destroy = false
-  }
 
 }
 
