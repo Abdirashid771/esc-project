@@ -10,7 +10,9 @@ Four dedicated GitHub Actions pipelines manage the full lifecycle—building, sc
 
 ---
 
-**https://tm.esproject.xyz**
+**Wesbite: https://tm.esproject.xyz**
+
+![Terraform Destroy Pipeline](Docs/pipelines/demo.png)
 
 ## Overview
 
@@ -26,7 +28,7 @@ This project deploys ThreatComposer on AWS with:
 - **CI/CD** — GitHub Actions with OIDC, no static credentials
 - **Security scanning** — Trivy on Docker images, Checkov on Terraform code
 - **Config management** — SSM Parameter Store for dynamic ECR URL retrieval
-- **Logging** — CloudWatch with 365 days retention
+- **Logging** — CloudWatch 
 
 
 ---
@@ -86,13 +88,13 @@ docker run -p 80:80 threatcomposer
 
 ## CI/CD Pipelines
 
-Four pipelines — infrastructure and application deployments are fully independent. All pipelines currently use `workflow_dispatch` for manual control.
+Four pipelines — infrastructure and application deployments are fully independent, with path filters ensuring only the relevant pipeline triggers when changes are made.
 
 | Pipeline | Steps |
 |---|---|
 | Docker | Build → Trivy scan → push to ECR |
 | Plan | fmt → init → validate → Checkov → plan → upload artifact |
-| Apply | Download plan → init → apply → health check |
+| Apply | Download plan → init → apply |
 | Destroy | init → destroy |
 
 ### Docker Pipeline
@@ -147,7 +149,7 @@ Path filters ensure only the relevant pipeline fires when changes are made. A ch
 
 **Multi-environment** — separate dev and prod Terraform workspaces with environment-specific tfvars. Currently single environment only.
 
-**Monitoring** — CloudWatch alarms on ALB 5xx error rate and ECS task health. Currently logging only with no alerting.
+**Monitoring** — CloudWatch alarms on ALB 5xx error rate and ECS task health.
 
 ---
 
