@@ -9,6 +9,7 @@ variable "alb_internal" {
 
 variable "alb_load_balancer_type" {
   type = string
+  default = "application"
 }
 
 variable "alb_subnets" {

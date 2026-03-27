@@ -1,10 +1,16 @@
 # ThreatComposer — ECS Fargate Deployment
 
-Production deployment of ThreatComposer, an open-source threat modelling tool built by AWS, on AWS ECS Fargate using Docker, Terraform, and GitHub Actions.
+ThreatComposer is an open-source threat modelling tool developed by AWS, designed to help security teams identify, document, and communicate risks across their systems.
 
-**Live: https://tm.esproject.xyz**
+This project deploys ThreatComposer on AWS in a production-grade environment. The application is containerised using a multi-stage Docker build, running as a non-root user with a minimal image footprint. Each image is scanned for vulnerabilities with Trivy before being pushed to ECR.
 
-![Image](https://github.com/user-attachments/assets/bc3beeaf-b76c-4ec0-9b60-2745852ccd8d)
+Infrastructure is fully defined in modular Terraform and deployed within a custom VPC spanning multiple availability zones, with both public and private subnets. The application runs on ECS Fargate behind an Application Load Balancer, with HTTPS enforced via ACM and Route53.
+
+Four dedicated GitHub Actions pipelines manage the full lifecycle—building, scanning, deploying, and tearing down infrastructure—all authenticated OIDC, eliminating the need for static credentials.
+
+---
+
+**https://tm.esproject.xyz**
 
 ## Overview
 
@@ -20,10 +26,8 @@ This project deploys ThreatComposer on AWS with:
 - **CI/CD** — GitHub Actions with OIDC, no static credentials
 - **Security scanning** — Trivy on Docker images, Checkov on Terraform code
 - **Config management** — SSM Parameter Store for dynamic ECR URL retrieval
-- **Logging** — CloudWatch with 7 day retention
+- **Logging** — CloudWatch with 365 days retention
 
-
-<!-- Screenshot -->
 
 ---
 
@@ -73,8 +77,8 @@ The following must exist before running any pipeline. Create manually once — t
 ## Local Development
 ```bash
 docker build -t threatcomposer ./app
-docker run -p 8080:80 threatcomposer
-curl http://localhost:8080/health
+docker run -p 80:80 threatcomposer
+
 
 ```
 
@@ -92,16 +96,16 @@ Four pipelines — infrastructure and application deployments are fully independ
 | Destroy | init → destroy |
 
 ### Docker Pipeline
-<!-- Screenshot -->
+![Docker Pipeline](Docs/pipelines/docker.png)
 
 ### Terraform Plan Pipeline
-<!-- Screenshot -->
+![Terraform Destroy Pipeline](Docs/pipelines/destroy.png)
 
 ### Terraform Apply Pipeline
-<!-- Screenshot -->
+![Terraform Apply Pipeline](Docs/pipelines/apply.png)
 
 ### Terraform Destroy Pipeline
-<!-- Screenshot -->
+
 
 ---
 
