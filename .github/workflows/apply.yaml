@@ -28,6 +28,9 @@ jobs:
       - name: Terraform setup
         uses: hashicorp/setup-terraform@v4
 
+      - name: Create tfvars
+        run: echo '${{secrets.TF_VARS}}' > infra/terraform.tfvars 
+
 
       - name: Terraform Init
         id: init
@@ -36,8 +39,9 @@ jobs:
 
      
       - name: Download plan artifact
-        uses: actions/download-artifact@v4
+        uses: dawidd6/action-download-artifact@v3
         with:
+             workflow: plan.yaml
              name: tfplan
              path: ./infra/
 
