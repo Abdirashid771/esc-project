@@ -8,8 +8,13 @@ resource "aws_lb" "alb_lb" {
   enable_deletion_protection = true
   drop_invalid_header_fields = true
 
+  lifecycle {
+    prevent_destroy = false
+  }
 
 }
+
+
 
 resource "aws_lb_target_group" "alb_target" {
   name        = var.lb_target_group_name

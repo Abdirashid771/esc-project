@@ -3,11 +3,11 @@ variable "alb_name" {
 }
 
 variable "alb_internal" {
-  type    = bool
+  type = bool
 }
 
 variable "alb_load_balancer_type" {
-  type = string
+  type    = string
   default = "application"
 }
 

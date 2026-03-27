@@ -1,7 +1,7 @@
 resource "aws_ecr_repository" "ecs_image" {
   name                 = var.aws_ecr_repository_name
   image_tag_mutability = var.aws_ecr_repository_image_tag_mutability
-
+  force_delete         = true
   image_scanning_configuration {
     scan_on_push = var.aws_ecr_repository_scan
   }
