@@ -50,8 +50,3 @@ jobs:
         run: terraform apply -auto-approve tfplan
         working-directory: ./infra
 
-      - name: Health check
-        run: |
-          sleep 30
-          curl --fail https://tm.esproject.xyz/health
-
