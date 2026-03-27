@@ -4,7 +4,7 @@ Production deployment of ThreatComposer, an open-source threat modelling tool bu
 
 **Live: https://tm.esproject.xyz**
 
-https://github.com/user-attachments/assets/f21282ac-2b71-4171-b772-31c7ade1ceb9
+[https://github.com/user-attachments/assets/f21282ac-2b71-4171-b772-31c7ade1ceb9](https://github.com/user-attachments/assets/f21282ac-2b71-4171-b772-31c7ade1ceb9)
 
 ## Overview
 
