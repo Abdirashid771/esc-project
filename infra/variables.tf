@@ -205,8 +205,7 @@ variable "lb_target_group_name" {
 }
 
 variable "lb_target_group_port" {
-  type    = number
-  default = 80
+  type = number
 }
 
 variable "lb_target_group_protocol" {
