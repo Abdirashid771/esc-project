@@ -4,6 +4,14 @@ variable "ecs_cluster_name" {
 
 }
 
+variable "setting_name" {
+  type = string
+}
+
+variable "setting_value" {
+  type = string
+}
+
 variable "ecs_task_definition_family" {
   type = string
 }
@@ -172,6 +180,7 @@ variable "availability_zone_1" {
 
 variable "public2_cidr_block" {
   type = string
+
 }
 
 variable "availability_zone_2" {
@@ -187,7 +196,6 @@ variable "private1_cidr_block" {
 
 variable "private2_cidr_block" {
   type = string
-
 }
 
 
@@ -370,7 +378,8 @@ variable "egress_cidr_blocks" {
 #ACM
 
 variable "acm_domain_name" {
-  type = string
+  type    = string
+  default = "tm.esproject.xyz"
 }
 
 variable "acm_validation" {
@@ -404,11 +413,13 @@ variable "value_ttl" {
 #Route53
 
 variable "aws_route53_zone_name" {
-  type = string
+  type    = string
+  default = "esproject.xyz"
 }
 
 variable "aws_route53_record_name" {
-  type = string
+  type    = string
+  default = "tm.esproject.xyz"
 }
 
 

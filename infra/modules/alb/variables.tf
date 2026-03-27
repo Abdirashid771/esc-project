@@ -75,7 +75,7 @@ variable "redirect_port" {
 
 variable "redirect_protocol" {
   type    = string
-  default = "https"
+  default = "HTTPS"
 }
 
 variable "redirect_status_code" {
