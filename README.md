@@ -64,6 +64,10 @@ This project deploys ThreatComposer on AWS with:
         └── destroy.yml
 
 ```
+## Multistage Dockerfile
+
+![Multistage Dockerfile](Docs/pipelines/Multistage.png)
+
 ---
 
 ## Bootstrap
