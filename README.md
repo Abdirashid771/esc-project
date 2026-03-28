@@ -62,8 +62,8 @@ This project deploys ThreatComposer on AWS with:
         ├── plan.yml
         ├── apply.yml
         └── destroy.yml
-```
 
+```
 ---
 
 ## Bootstrap
@@ -101,7 +101,7 @@ Four pipelines — infrastructure and application deployments are fully independ
 ![Docker Pipeline](Docs/pipelines/docker.png)
 
 ### Terraform Plan Pipeline
-![Terraform Destroy Pipeline](Docs/pipelines/destroy.png)
+![Terraform Destroy Pipeline](Docs/pipelines/terraform-deploy-pipeline.png)
 
 ### Terraform Apply Pipeline
 ![Terraform Apply Pipeline](Docs/pipelines/apply.png)
