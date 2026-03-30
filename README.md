@@ -70,7 +70,7 @@ This project deploys ThreatComposer on AWS with:
 
 ---
 
-## Bootstrap
+## Manual Setup
 
 The following must exist before running any pipeline. Create manually once — these are not managed by Terraform.
 
