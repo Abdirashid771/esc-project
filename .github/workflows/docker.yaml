@@ -54,3 +54,10 @@ jobs:
       - name: Push Docker image
         run: |
           docker push $ECR_REGISTRY:$IMAGE_TAG
+
+      - name: Force ECS redeployment
+        run: |
+          aws ecs update-service \
+          --cluster ${{ secrets.ECS_CLUSTER_NAME }} \
+          --service ${{ secrets.ECS_SERVICE_NAME }} \
+          --force-new-deployment

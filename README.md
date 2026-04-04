@@ -18,17 +18,17 @@ Four dedicated GitHub Actions pipelines manage the full lifecycle—building, sc
 
 This project deploys ThreatComposer on AWS with:
 
-- **Containerisation** — Docker multi-stage build with non-root user and minimal image footprint
-- **Infrastructure** — Terraform with modular architecture and remote state on S3
-- **Orchestration** — ECS Fargate, serverless containers across two availability zones
-- **Networking** — VPC with public and private subnets, ALB, security groups
-- **TLS** — ACM certificate with DNS validation, HTTPS enforced via ALB listener rule
-- **DNS** — Route53 alias record pointing to the ALB
-- **Registry** — ECR with immutable tags and scan on push
-- **CI/CD** — GitHub Actions with OIDC, no static credentials
-- **Security scanning** — Trivy on Docker images, Checkov on Terraform code
-- **Config management** — SSM Parameter Store for dynamic ECR URL retrieval
-- **Logging** — CloudWatch 
+- **Containerisation** - Docker multi-stage build with non-root user and minimal image footprint
+- **Infrastructure** - Terraform with modular architecture and remote state on S3
+- **Orchestration** - ECS Fargate, serverless containers across two availability zones
+- **Networking** - VPC with public and private subnets, ALB, security groups
+- **TLS** - ACM certificate with DNS validation, HTTPS enforced via ALB listener rule
+- **DNS** - Route53 alias record pointing to the ALB
+- **Registry** - ECR with immutable tags and scan on push
+- **CI/CD** - GitHub Actions with OIDC, no static credentials
+- **Security scanning** - Trivy on Docker images, Checkov on Terraform code
+- **Config management** - SSM Parameter Store for dynamic ECR URL retrieval
+- **Logging** - CloudWatch 
 
 
 ---
@@ -70,13 +70,20 @@ This project deploys ThreatComposer on AWS with:
 
 ---
 
-## Manual Setup
+## Boostrap
 
-The following must exist before running any pipeline. Create manually once — these are not managed by Terraform.
+Before running any pipeline, provision the Terraform backend by running the bootstrap script once from the project root
 
-- **S3 bucket** — remote state storage with versioning enabled
-- **DynamoDB table** — state locking with `LockID` as partition key
-- **OIDC provider** — two IAM roles scoped to this repository, read role for plan and write role for docker, apply and destroy. Store role ARNs as GitHub secrets.
+```bash
+bash bootstrap.sh
+```
+This creates:
+- S3 bucket for remote state storage with versioning and encryption enabled
+- DynamoDB table for state locking
+- Script is idempotent — safe to run multiple times
+
+The OIDC provider and IAM roles are managed by Terraform.
+Store the role ARNs as GitHub secrets — read role for plan, write role for docker, apply and destroy pipelines.
 
 ---
 
