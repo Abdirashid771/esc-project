@@ -12,7 +12,7 @@ Four dedicated GitHub Actions pipelines manage the full lifecycle—building, sc
 
 **Wesbite: https://tm.esproject.xyz**
 
-![Terraform Destroy Pipeline](Docs/pipelines/demo.png)
+![Terraform Destroy Pipeline](docs/pipelines/demo.png)
 
 ## Overview
 
@@ -35,7 +35,7 @@ This project deploys ThreatComposer on AWS with:
 
 ## Architecture
 
-![Architecture Diagram](Docs/architecture.png)
+![Architecture Diagram](docs/architecture.png)
 
 ---
 
@@ -66,7 +66,7 @@ This project deploys ThreatComposer on AWS with:
 ```
 ## Multistage Dockerfile
 
-![Multistage Dockerfile](Docs/pipelines/Multistage.png)
+![Multistage Dockerfile](docs/pipelines/Multistage.png)
 
 ---
 
@@ -109,16 +109,16 @@ Four pipelines — infrastructure and application deployments are fully independ
 | Destroy | init → destroy |
 
 ### Docker Pipeline
-![Docker Pipeline](Docs/pipelines/docker.png)
+![Docker Pipeline](docs/pipelines/docker.png)
 
 ### Terraform Plan Pipeline
-![Terraform Destroy Pipeline](Docs/pipelines/terraform-deploy-pipeline.png)
+![Terraform Destroy Pipeline](docs/pipelines/terraform-deploy-pipeline.png)
 
 ### Terraform Apply Pipeline
-![Terraform Apply Pipeline](Docs/pipelines/apply.png)
+![Terraform Apply Pipeline](docs/pipelines/apply.png)
 
 ### Terraform Destroy Pipeline
-![Terraform Destroy Pipeline](Docs/pipelines/destroy.png)
+![Terraform Destroy Pipeline](docs/pipelines/destroy.png)
 
 ---
 
